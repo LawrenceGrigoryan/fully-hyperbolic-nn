@@ -1,6 +1,5 @@
 """Base model class."""
 
-from os import POSIX_FADV_NOREUSE
 import numpy as np
 from sklearn.metrics import roc_auc_score, average_precision_score
 import torch
@@ -8,7 +7,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from layers.layers import FermiDiracDecoder
-import layers.hyp_layers as hyp_layers
 import manifolds
 import models.encoders as encoders
 from models.decoders import model2decoder

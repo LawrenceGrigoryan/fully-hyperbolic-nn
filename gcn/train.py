@@ -11,12 +11,16 @@ import time
 
 import numpy as np
 import torch
-from config import parser
 from models.base_models import NCModel, LPModel
 from utils.data_utils import load_data
 from utils.train_utils import get_dir_name, format_metrics
-
 from geoopt import ManifoldParameter
+
+from config import (
+    parser,
+    DATAPATH,
+    LOG_DIR
+)
 
 
 def train(args):
@@ -33,7 +37,7 @@ def train(args):
         if not args.save_dir:
             dt = datetime.datetime.now()
             date = f"{dt.year}_{dt.month}_{dt.day}"
-            models_dir = os.path.join(os.environ['LOG_DIR'], args.task, date)
+            models_dir = os.path.join(LOG_DIR, args.task, date)
             save_dir = get_dir_name(models_dir)
         else:
             save_dir = args.save_dir
@@ -50,7 +54,7 @@ def train(args):
     logging.info("Using seed {}.".format(args.seed))
 
     # Load data
-    data = load_data(args, os.path.join(os.environ['DATAPATH'], args.dataset))
+    data = load_data(args, os.path.join(DATAPATH, args.dataset))
     args.n_nodes, args.feat_dim = data['features'].shape
     if args.task == 'nc':
         Model = NCModel
