@@ -59,7 +59,6 @@ def train(args):
     if args.task == 'nc':
         Model = NCModel
         args.n_classes = int(data['labels'].max() + 1)
-        args.data = data
         logging.info(f'Num classes: {args.n_classes}')
     else:
         args.nb_false_edges = len(data['train_edges_false'])
