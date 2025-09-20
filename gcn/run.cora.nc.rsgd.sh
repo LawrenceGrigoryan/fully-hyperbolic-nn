@@ -1,4 +1,4 @@
-ython train.py --patience 500 \
+python train.py --patience 500 \
                 --task nc \
                 --dataset cora \
                 --model HyboNet \
