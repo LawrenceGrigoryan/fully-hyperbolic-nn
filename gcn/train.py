@@ -98,6 +98,8 @@ def train(args):
     elif args.optimizer == 'rsgd':
         optimizer = RiemannianSGD(params=optimizer_grouped_parameters,
                                   lr=args.lr,
+                                  momentum=args.momentum,
+                                  nesterov=args.nesterov,
                                   stabilize=10)
     lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer,
                                                    step_size=int(
