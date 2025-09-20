@@ -8,6 +8,8 @@ python train.py --patience 500 \
                 --bias 1 \
                 --dropout 0.9 \
                 --optimizer rsgd \
+                --momentum 0.7 \
+                --nesterov True \
                 --weight-decay 0.01 \
                 --manifold Lorentz \
                 --log-freq 5 \
